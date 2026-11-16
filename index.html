@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deployment status</title>
+<style>
+  :root{--bg:#f2f5f4;--ink:#10201c;--muted:#53655f;--ok:#0b7a5a;--line:#cfd9d5;--card:#fff}
+  @media (prefers-color-scheme:dark){:root{--bg:#0e1816;--ink:#e6f0ec;--muted:#8fa59d;--ok:#3ddc9f;--line:#24362f;--card:#142420}}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);
+       font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:24px}
+  main{width:min(560px,100%)}
+  h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:0 0 6px;letter-spacing:-.02em}
+  p.sub{margin:0 0 28px;color:var(--muted)}
+  .state{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--ok);margin-bottom:18px}
+  .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 22%,transparent)}
+  dl{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px}
+  .row{display:flex;justify-content:space-between;gap:16px;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  dt{color:var(--muted)} dd{margin:0;font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-all;text-align:right}
+</style>
+</head>
+<body>
+<main>
+  <div class="state"><span class="dot"></span>Running</div>
+  <h1>Deployed by CI/CD</h1>
+  <p class="sub">This page was built into a Docker image and pushed to AWS EC2 by GitHub Actions.</p>
+  <dl>
+    <div class="row"><dt>Commit</dt><dd>__GIT_SHA__</dd></div>
+    <div class="row"><dt>Built at</dt><dd>__BUILD_TIME__</dd></div>
+    <div class="row"><dt>Web server</dt><dd>Nginx (Alpine) in Docker</dd></div>
+    <div class="row"><dt>Health check</dt><dd><a href="/healthz" style="color:inherit">/healthz</a></dd></div>
+  </dl>
+</main>
+</body>
+</html>

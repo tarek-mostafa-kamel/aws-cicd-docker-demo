@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        GIT_SHA: ${GIT_SHA:-local}
+        BUILD_TIME: ${BUILD_TIME:-unknown}
+    container_name: web
+    ports:
+      - "80:80"
+    restart: unless-stopped
